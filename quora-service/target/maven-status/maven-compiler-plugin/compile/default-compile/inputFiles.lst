@@ -5,8 +5,10 @@ D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\s
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\dao\UserDao.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\exception\AuthenticationFailedException.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\business\PasswordCryptographyProvider.java
+D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\entity\UserAuthEntity.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\common\GenericErrorCode.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\exception\UserNotFoundException.java
+D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\dao\UserAuthDao.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\exception\SignOutRestrictedException.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\business\UserService.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\entity\UserEntity.java

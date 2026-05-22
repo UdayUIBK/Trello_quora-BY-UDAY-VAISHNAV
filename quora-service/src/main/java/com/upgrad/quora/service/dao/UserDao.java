@@ -25,14 +25,35 @@ public class UserDao {
     public UserEntity getUserByEmail(final String email) {
 
         try {
+
             return entityManager
                     .createQuery(
                             "select u from UserEntity u where u.email = :email",
-                            UserEntity.class)
+                            UserEntity.class
+                    )
                     .setParameter("email", email)
                     .getSingleResult();
 
         } catch (Exception e) {
+
+            return null;
+        }
+    }
+
+    public UserEntity getUserByUserName(final String userName) {
+
+        try {
+
+            return entityManager
+                    .createQuery(
+                            "select u from UserEntity u where u.userName = :userName",
+                            UserEntity.class
+                    )
+                    .setParameter("userName", userName)
+                    .getSingleResult();
+
+        } catch (Exception e) {
+
             return null;
         }
     }
