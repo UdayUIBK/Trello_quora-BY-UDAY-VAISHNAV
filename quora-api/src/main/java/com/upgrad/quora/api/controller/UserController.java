@@ -1,6 +1,7 @@
 package com.upgrad.quora.api.controller;
 
 import com.upgrad.quora.api.model.SigninResponse;
+import com.upgrad.quora.api.model.SignoutResponse;
 import com.upgrad.quora.api.model.SignupUserRequest;
 import com.upgrad.quora.api.model.SignupUserResponse;
 
@@ -99,5 +100,29 @@ public class UserController {
                 .message("SIGNED IN SUCCESSFULLY");
 
         return new ResponseEntity<>(signinResponse, HttpStatus.OK);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.POST,
+            path = "/user/signout",
+            produces = "application/json"
+    )
+
+    public ResponseEntity<SignoutResponse> signout(
+            @RequestHeader("authorization") final String authorization
+    ) {
+
+        UserAuthEntity userAuthEntity =
+                userService.signout(authorization);
+
+        if (userAuthEntity == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        SignoutResponse signoutResponse = new SignoutResponse()
+                .id(userAuthEntity.getUser().getUuid())
+                .message("SIGNED OUT SUCCESSFULLY");
+
+        return new ResponseEntity<>(signoutResponse, HttpStatus.OK);
     }
 }

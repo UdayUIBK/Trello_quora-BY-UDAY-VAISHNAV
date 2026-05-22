@@ -61,4 +61,18 @@ public class UserService {
 
         return userAuthDao.createUserAuth(userAuthEntity);
     }
+
+    public UserAuthEntity signout(final String accessToken) {
+
+        UserAuthEntity userAuthEntity =
+                userAuthDao.getUserAuthToken(accessToken);
+
+        if (userAuthEntity == null) {
+            return null;
+        }
+
+        userAuthEntity.setLogoutAt(ZonedDateTime.now());
+
+        return userAuthDao.updateUserAuth(userAuthEntity);
+    }
 }
