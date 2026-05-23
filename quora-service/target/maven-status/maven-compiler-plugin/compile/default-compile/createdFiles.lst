@@ -1,4 +1,5 @@
 com\upgrad\quora\service\business\UserService.class
+com\upgrad\quora\service\business\AnswerService.class
 com\upgrad\quora\service\exception\SignOutRestrictedException.class
 com\upgrad\quora\service\common\GenericErrorCode.class
 com\upgrad\quora\service\exception\UserNotFoundException.class
@@ -16,6 +17,8 @@ com\upgrad\quora\service\business\PasswordCryptographyProvider.class
 com\upgrad\quora\service\exception\AuthorizationFailedException.class
 com\upgrad\quora\service\dao\UserAuthDao.class
 com\upgrad\quora\service\ServiceConfiguration.class
+com\upgrad\quora\service\dao\AnswerDao.class
+com\upgrad\quora\service\entity\AnswerEntity.class
 com\upgrad\quora\service\exception\AuthenticationFailedException.class
 com\upgrad\quora\service\dao\UserDao.class
 com\upgrad\quora\service\exception\SignUpRestrictedException.class

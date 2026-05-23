@@ -7,13 +7,18 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.upgrad.quora.service.dao.AnswerDao;
 import com.upgrad.quora.service.dao.QuestionDao;
 import com.upgrad.quora.service.dao.UserAuthDao;
+import com.upgrad.quora.service.entity.AnswerEntity;
 import com.upgrad.quora.service.entity.QuestionEntity;
 import com.upgrad.quora.service.entity.UserAuthEntity;
 
 @Service
-public class QuestionService {
+public class AnswerService {
+
+    @Autowired
+    private AnswerDao answerDao;
 
     @Autowired
     private QuestionDao questionDao;
@@ -21,44 +26,9 @@ public class QuestionService {
     @Autowired
     private UserAuthDao userAuthDao;
 
-    public QuestionEntity createQuestion(
-            final QuestionEntity questionEntity,
-            final String authorization
-    ) {
-
-        UserAuthEntity userAuthEntity =
-                userAuthDao.getUserAuthToken(authorization);
-
-        if (userAuthEntity == null) {
-            return null;
-        }
-
-        questionEntity.setUuid(UUID.randomUUID().toString());
-
-        questionEntity.setDate(ZonedDateTime.now());
-
-        questionEntity.setUser(userAuthEntity.getUser());
-
-        return questionDao.createQuestion(questionEntity);
-    }
-
-    public List<QuestionEntity> getAllQuestions(
-            final String authorization
-    ) {
-
-        UserAuthEntity userAuthEntity =
-                userAuthDao.getUserAuthToken(authorization);
-
-        if (userAuthEntity == null) {
-            return null;
-        }
-
-        return questionDao.getAllQuestions();
-    }
-
-    public QuestionEntity editQuestion(
+    public AnswerEntity createAnswer(
             final String questionId,
-            final String content,
+            final String answer,
             final String authorization
     ) {
 
@@ -76,23 +46,22 @@ public class QuestionService {
             return null;
         }
 
-        if (
-                !questionEntity.getUser().getUuid()
-                        .equals(userAuthEntity.getUser().getUuid())
-                        &&
-                        !userAuthEntity.getUser().getRole()
-                                .equals("admin")
-        ) {
+        AnswerEntity answerEntity = new AnswerEntity();
 
-            return null;
-        }
+        answerEntity.setUuid(UUID.randomUUID().toString());
 
-        questionEntity.setContent(content);
+        answerEntity.setAns(answer);
 
-        return questionDao.updateQuestion(questionEntity);
+        answerEntity.setDate(ZonedDateTime.now());
+
+        answerEntity.setUser(userAuthEntity.getUser());
+
+        answerEntity.setQuestion(questionEntity);
+
+        return answerDao.createAnswer(answerEntity);
     }
 
-    public QuestionEntity deleteQuestion(
+    public List<AnswerEntity> getAllAnswers(
             final String questionId,
             final String authorization
     ) {
@@ -104,15 +73,31 @@ public class QuestionService {
             return null;
         }
 
-        QuestionEntity questionEntity =
-                questionDao.getQuestionByUuid(questionId);
+        return answerDao.getAllAnswers(questionId);
+    }
 
-        if (questionEntity == null) {
+    public AnswerEntity editAnswer(
+            final String answerId,
+            final String answer,
+            final String authorization
+    ) {
+
+        UserAuthEntity userAuthEntity =
+                userAuthDao.getUserAuthToken(authorization);
+
+        if (userAuthEntity == null) {
+            return null;
+        }
+
+        AnswerEntity answerEntity =
+                answerDao.getAnswerByUuid(answerId);
+
+        if (answerEntity == null) {
             return null;
         }
 
         if (
-                !questionEntity.getUser().getUuid()
+                !answerEntity.getUser().getUuid()
                         .equals(userAuthEntity.getUser().getUuid())
                         &&
                         !userAuthEntity.getUser().getRole()
@@ -122,8 +107,43 @@ public class QuestionService {
             return null;
         }
 
-        questionDao.deleteQuestion(questionEntity);
+        answerEntity.setAns(answer);
 
-        return questionEntity;
+        return answerDao.updateAnswer(answerEntity);
+    }
+
+    public AnswerEntity deleteAnswer(
+            final String answerId,
+            final String authorization
+    ) {
+
+        UserAuthEntity userAuthEntity =
+                userAuthDao.getUserAuthToken(authorization);
+
+        if (userAuthEntity == null) {
+            return null;
+        }
+
+        AnswerEntity answerEntity =
+                answerDao.getAnswerByUuid(answerId);
+
+        if (answerEntity == null) {
+            return null;
+        }
+
+        if (
+                !answerEntity.getUser().getUuid()
+                        .equals(userAuthEntity.getUser().getUuid())
+                        &&
+                        !userAuthEntity.getUser().getRole()
+                                .equals("admin")
+        ) {
+
+            return null;
+        }
+
+        answerDao.deleteAnswer(answerEntity);
+
+        return answerEntity;
     }
 }
