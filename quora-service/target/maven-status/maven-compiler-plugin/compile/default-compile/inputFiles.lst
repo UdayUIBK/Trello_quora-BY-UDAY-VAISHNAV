@@ -6,6 +6,7 @@ D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\s
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\exception\AuthenticationFailedException.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\business\PasswordCryptographyProvider.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\entity\UserAuthEntity.java
+D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\business\QuestionService.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\common\GenericErrorCode.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\exception\UserNotFoundException.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\dao\UserAuthDao.java
@@ -15,4 +16,6 @@ D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\s
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\ServiceConfiguration.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\common\UnexpectedException.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\business\JwtTokenProvider.java
+D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\dao\QuestionDao.java
+D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\entity\QuestionEntity.java
 D:\UPGRAD ASSIGNMENT\Trello_quora\quora-service\src\main\java\com\upgrad\quora\service\exception\SignUpRestrictedException.java
